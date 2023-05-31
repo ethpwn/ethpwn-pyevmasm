@@ -4,8 +4,9 @@ from builtins import map, next, range, object
 
 from future.builtins import next, bytes  # type: ignore
 import copy
+import functools
 
-DEFAULT_FORK = "london"
+DEFAULT_FORK = "paris"
 
 """
     Example use::
@@ -1094,6 +1095,13 @@ london_instruction_table = InstructionTable(  # type: ignore
     london_instruction_table, previous_fork=istanbul_instruction_table
 )
 
+muir_glacier_instruction_table = InstructionTable({}, previous_fork=istanbul_instruction_table)
+
+paris_instruction_table = {0x44: ("PREVRANDAO", 0, 0, 1, 2, "Get the previous blocks Randao random number.")}
+paris_instruction_table = InstructionTable(  # type: ignore
+    paris_instruction_table, previous_fork=london_instruction_table
+)
+
 accepted_forks = (
     "frontier",
     "homestead",
@@ -1105,6 +1113,8 @@ accepted_forks = (
     "serenity",
     "istanbul",
     "london",
+    "muir-glacier",
+    "paris"
 )
 
 
@@ -1119,6 +1129,8 @@ instruction_tables = {
     "serenity": serenity_instruction_table,
     "istanbul": istanbul_instruction_table,
     "london": london_instruction_table,
+    "muir-glacier": muir_glacier_instruction_table,
+    "paris": paris_instruction_table
 }
 
 
@@ -1152,9 +1164,12 @@ def block_to_fork(block_number):
         # 7280000: "constantinople", # Same Block as petersburg, commented to avoid conflicts
         7280000: "petersburg",
         9069000: "istanbul",
+        9200000: 'muir-glacier',
         12965000: "london",
+        15537394: "paris",
         99999999: "serenity",  # to be replaced after Serenity launch
     }
+
     fork_names = list(forks_by_block.values())
     fork_blocks = list(forks_by_block.keys())
     return fork_names[bisect(fork_blocks, block_number) - 1]
