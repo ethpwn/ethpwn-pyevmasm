@@ -1102,6 +1102,7 @@ paris_instruction_table = InstructionTable(  # type: ignore
     paris_instruction_table, previous_fork=london_instruction_table
 )
 
+
 accepted_forks = (
     "frontier",
     "homestead",
@@ -1114,7 +1115,8 @@ accepted_forks = (
     "istanbul",
     "london",
     "muir-glacier",
-    "paris"
+    "paris",
+    "shanghai"
 )
 
 
@@ -1130,7 +1132,8 @@ instruction_tables = {
     "istanbul": istanbul_instruction_table,
     "london": london_instruction_table,
     "muir-glacier": muir_glacier_instruction_table,
-    "paris": paris_instruction_table
+    "paris": paris_instruction_table,
+    "shanghai": paris_instruction_table
 }
 
 
@@ -1167,6 +1170,7 @@ def block_to_fork(block_number):
         9200000: 'muir-glacier',
         12965000: "london",
         15537394: "paris",
+        17034870: "shanghai"
         99999999: "serenity",  # to be replaced after Serenity launch
     }
 
