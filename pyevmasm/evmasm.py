@@ -1170,7 +1170,7 @@ def block_to_fork(block_number):
         9200000: 'muir-glacier',
         12965000: "london",
         15537394: "paris",
-        17034870: "shanghai"
+        17034870: "shanghai",
         99999999: "serenity",  # to be replaced after Serenity launch
     }
 
