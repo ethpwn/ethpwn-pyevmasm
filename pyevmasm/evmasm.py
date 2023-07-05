@@ -1102,6 +1102,10 @@ paris_instruction_table = InstructionTable(  # type: ignore
     paris_instruction_table, previous_fork=london_instruction_table
 )
 
+shanghai_instruction_table = {0x5f: ("PUSH", 0, 0, 1, 2, "Pushes the constant value 0 onto the stack.")} 
+shanghai_instruction_table = InstructionTable(  # type: ignore
+    shanghai_instruction_table, previous_fork=paris_instruction_table
+)
 
 accepted_forks = (
     "frontier",
@@ -1133,7 +1137,7 @@ instruction_tables = {
     "london": london_instruction_table,
     "muir-glacier": muir_glacier_instruction_table,
     "paris": paris_instruction_table,
-    "shanghai": paris_instruction_table
+    "shanghai": shanghai_instruction_table
 }
 
 
