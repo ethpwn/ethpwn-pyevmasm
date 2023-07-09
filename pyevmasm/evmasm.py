@@ -861,7 +861,7 @@ frontier_instruction_table = {
     0x56: ("JUMP", 0, 1, 0, 8, "Alter the program counter."),
     0x57: ("JUMPI", 0, 2, 0, 10, "Conditionally alter the program counter."),
     0x58: (
-        "GETPC",
+        "PC",
         0,
         0,
         1,
