@@ -1096,6 +1096,8 @@ london_instruction_table = InstructionTable(  # type: ignore
 )
 
 muir_glacier_instruction_table = InstructionTable({}, previous_fork=istanbul_instruction_table)
+arrow_glacier_instruction_table = InstructionTable({}, previous_fork=london_instruction_table)
+gray_glacier_instruction_table = InstructionTable({}, previous_fork=london_instruction_table)
 
 paris_instruction_table = {0x44: ("PREVRANDAO", 0, 0, 1, 2, "Get the previous blocks Randao random number.")}
 paris_instruction_table = InstructionTable(  # type: ignore
@@ -1118,6 +1120,8 @@ accepted_forks = (
     "serenity",
     "istanbul",
     "london",
+    "arrow-glacier",
+    "gray-glacier"
     "muir-glacier",
     "paris",
     "shanghai"
@@ -1134,8 +1138,10 @@ instruction_tables = {
     "petersburg": constantinople_instruction_table,  # constantinople table is intentional here: those two are aliases
     "serenity": serenity_instruction_table,
     "istanbul": istanbul_instruction_table,
-    "london": london_instruction_table,
     "muir-glacier": muir_glacier_instruction_table,
+    "london": london_instruction_table,
+    "arrow-glacier": arrow_glacier_instruction_table,
+    "gray-glacier": gray_glacier_instruction_table,
     "paris": paris_instruction_table,
     "shanghai": shanghai_instruction_table
 }
@@ -1173,6 +1179,8 @@ def block_to_fork(block_number):
         9069000: "istanbul",
         9200000: 'muir-glacier',
         12965000: "london",
+        13773000: "arrow-glacier",
+        15050000: "gray-glacier",
         15537394: "paris",
         17034870: "shanghai",
         99999999: "serenity",  # to be replaced after Serenity launch
