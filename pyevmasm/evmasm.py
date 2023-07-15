@@ -1089,19 +1089,21 @@ istanbul_instruction_table = InstructionTable(  # type: ignore
     istanbul_instruction_table, previous_fork=serenity_instruction_table
 )
 
-london_instruction_table = {0x48: ("BASEFEE", 0, 0, 1, 2, "Base fee in wei")}
 
+berlin_instruction_table = InstructionTable({}, previous_fork=istanbul_instruction_table)
+
+london_instruction_table = {0x48: ("BASEFEE", 0, 0, 1, 2, "Base fee in wei")}
 london_instruction_table = InstructionTable(  # type: ignore
-    london_instruction_table, previous_fork=istanbul_instruction_table
+    london_instruction_table, previous_fork=berlin_instruction_table
 )
 
-muir_glacier_instruction_table = InstructionTable({}, previous_fork=istanbul_instruction_table)
+muir_glacier_instruction_table = InstructionTable({}, previous_fork=london_instruction_table)
 arrow_glacier_instruction_table = InstructionTable({}, previous_fork=london_instruction_table)
 gray_glacier_instruction_table = InstructionTable({}, previous_fork=london_instruction_table)
 
 paris_instruction_table = {0x44: ("PREVRANDAO", 0, 0, 1, 2, "Get the previous blocks Randao random number.")}
 paris_instruction_table = InstructionTable(  # type: ignore
-    paris_instruction_table, previous_fork=london_instruction_table
+    paris_instruction_table, previous_fork=gray_glacier_instruction_table
 )
 
 shanghai_instruction_table = {0x5f: ("PUSH", 0, 0, 1, 2, "Pushes the constant value 0 onto the stack.")} 
@@ -1119,6 +1121,7 @@ accepted_forks = (
     "petersburg",
     "serenity",
     "istanbul",
+    "berlin",
     "london",
     "arrow-glacier",
     "gray-glacier"
@@ -1138,6 +1141,7 @@ instruction_tables = {
     "petersburg": constantinople_instruction_table,  # constantinople table is intentional here: those two are aliases
     "serenity": serenity_instruction_table,
     "istanbul": istanbul_instruction_table,
+    "berlin": berlin_instruction_table,
     "muir-glacier": muir_glacier_instruction_table,
     "london": london_instruction_table,
     "arrow-glacier": arrow_glacier_instruction_table,
@@ -1177,6 +1181,7 @@ def block_to_fork(block_number):
         # 7280000: "constantinople", # Same Block as petersburg, commented to avoid conflicts
         7280000: "petersburg",
         9069000: "istanbul",
+        12244000: "berlin",
         9200000: 'muir-glacier',
         12965000: "london",
         13773000: "arrow-glacier",
