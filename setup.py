@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='ethpwn-pyevmasm',
-    version='0.2.4',
+    version='0.2.5',
     description='Ethereum Virtual Machine (EVM) assembler and disassembler',
     author='Trail of Bits',
     author_email='evmasm@trailofbits.com',
