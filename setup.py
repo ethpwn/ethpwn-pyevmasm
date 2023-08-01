@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='ethtools-pyevmasm',
+    name='ethpwn-pyevmasm',
     version='0.2.4',
     description='Ethereum Virtual Machine (EVM) assembler and disassembler',
     author='Trail of Bits',
